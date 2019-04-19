@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatFormField} from '@angular/material';
+import {Book} from '../../models/book';
+
 @Component({
   selector: 'bm-book-editor',
   templateUrl: './book-editor.component.html',
@@ -7,10 +9,15 @@ import {MatFormField} from '@angular/material';
 })
 export class BookEditorComponent implements OnInit {
 
-  title: string;
-  description: string;
-  rating: number;
-  selected = 'Unknown';
+  book: Book = {
+    id : 1,
+    title : '',
+    description : '',
+    rating : 10,
+    author : null,
+  };
+
+  authors = ['Unknown', 'JK Rowling', 'Patrick Rothfuss', 'Mark Lawrence'];
 
   constructor() { }
 

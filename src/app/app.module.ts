@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BooksComponent } from './books/books.component';
@@ -8,11 +8,12 @@ import { AuthorsComponent } from './authors/authors.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatTreeModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookTableComponent } from './books/book-table/book-table.component';
 import { AuthorTableComponent } from './authors/author-table/author-table.component';
 import { BookEditorComponent } from './books/book-editor/book-editor.component';
+import { AuthorEditorComponent } from './authors/author-editor/author-editor.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +24,12 @@ import { BookEditorComponent } from './books/book-editor/book-editor.component';
     DashboardComponent,
     BookTableComponent,
     AuthorTableComponent,
-    BookEditorComponent
+    BookEditorComponent,
+    AuthorEditorComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -42,7 +45,8 @@ import { BookEditorComponent } from './books/book-editor/book-editor.component';
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

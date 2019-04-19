@@ -14,7 +14,7 @@ export class BookTableComponent implements AfterViewInit {
   dataSource: BookTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'title', 'rating', 'author'];
+  displayedColumns = ['id', 'title', 'rating', 'author', 'actions'];
 
   ngAfterViewInit() {
     this.dataSource = new BookTableDataSource(this.paginator, this.sort);

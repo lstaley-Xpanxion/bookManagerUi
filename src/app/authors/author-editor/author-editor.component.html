@@ -1,23 +1,34 @@
 <div>
-  <h2>Create/Edit a Book</h2>
-  <form id="editorForm">
+  <h2>Create/Edit an Author</h2>
+
+  <form id="authorEditorForm">
     <mat-form-field>
       <input
-        id="titleInput"
+        id="firstNameInput"
         matInput
-        #titleInput
-        placeholder="Title"
-        [(ngModel)]="book.title" required
+        #firstNameInput
+        placeholder="First Name"
+        [(ngModel)]="author.firstName" required
       />
     </mat-form-field>
     <br /><br />
+    <mat-form-field>
+      <input
+        id="lastNameInput"
+        matInput
+        #lastNameInput
+        placeholder="Last Name"
+        [(ngModel)]="author.lastName" required
+      />
+    </mat-form-field>
+    <br/><br/>
     <mat-form-field>
       <mat-label id="descriptionLabel" for="descriptionInput" >Description</mat-label>
       <textarea id="descriptionInput"
         matInput
         #descriptionInput
         placeholder="Description"
-        [(ngModel)]="book.description" >
+        [(ngModel)]="author.description" >
       </textarea>
     </mat-form-field>
     <br /><br />
@@ -27,16 +38,9 @@
         matInput
         #ratingInput
         placeholder="Rating"
-        [(ngModel)]="book.rating" required
+        [(ngModel)]="author.rating" required
       />
     </mat-form-field>
     <br /><br/>
-    <mat-form-field>
-      <mat-label id="authorLabel" for="authorSelect">Author</mat-label>
-     <mat-select id="authorSelect" #author [(ngModel)]="book.author" aria-placeholder="Author">
-       <mat-option *ngFor="let author of authors">{{author}}</mat-option>
-     </mat-select>
-
-    </mat-form-field>
   </form>
 </div>
