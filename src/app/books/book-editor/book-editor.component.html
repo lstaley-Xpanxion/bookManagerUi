@@ -1,0 +1,46 @@
+<div>
+  <h2>Create/Edit a Book</h2>
+
+  <form id="editorForm">
+    <mat-form-field>
+      <input
+        id="titleInput"
+        matInput
+        #titleInput
+        placeholder="Title"
+        (input)="(title)" required
+      />
+    </mat-form-field>
+    <br /><br />
+    <mat-form-field>
+      <mat-label id="descriptionLabel" for="descriptionInput" >Description</mat-label>
+      <textarea id="descriptionInput"
+        matInput
+        #descriptionInput
+        placeholder="Description"
+        (input)="(description)" >
+      </textarea>
+    </mat-form-field>
+    <br /><br />
+<mat-form-field>
+      <input
+        id="rating" type="number" step=".5"
+        matInput
+        #ratingInput
+        placeholder="Rating"
+        (input)="(rating)" required
+      />
+    </mat-form-field>
+    <br /><br/>
+    <mat-form-field>
+      <mat-label id="authorLabel" for="authorSelect">Author</mat-label>
+     <mat-select id="authorSelect" #author [(value)]="selected" aria-placeholder="Author">
+        <mat-option>-- Unknown --</mat-option>
+        <mat-option>JK Rowling</mat-option>
+        <mat-option>Patrick Rothfuss</mat-option>
+        <mat-option>Mark Lawerence</mat-option>
+     </mat-select>
+
+    </mat-form-field>
+  </form>
+</div>

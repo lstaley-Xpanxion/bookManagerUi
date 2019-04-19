@@ -8,10 +8,11 @@ import { AuthorsComponent } from './authors/authors.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookTableComponent } from './books/book-table/book-table.component';
 import { AuthorTableComponent } from './authors/author-table/author-table.component';
+import { BookEditorComponent } from './books/book-editor/book-editor.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthorTableComponent } from './authors/author-table/author-table.compon
     NavComponent,
     DashboardComponent,
     BookTableComponent,
-    AuthorTableComponent
+    AuthorTableComponent,
+    BookEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,9 @@ import { AuthorTableComponent } from './authors/author-table/author-table.compon
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
