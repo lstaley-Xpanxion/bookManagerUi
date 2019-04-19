@@ -1,6 +1,7 @@
 .full-width-table {
   width: 100%;
 }
+
 /* center headers for tables */
 .mat-sort-header-container {
   display:flex;

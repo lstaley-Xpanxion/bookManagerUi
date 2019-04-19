@@ -11,7 +11,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookTableComponent } from './books/book-table/book-table.component';
-import { AuthorTableComponent } from './author-table/author-table.component';
+import { AuthorTableComponent } from './authors/author-table/author-table.component';
 
 @NgModule({
   declarations: [

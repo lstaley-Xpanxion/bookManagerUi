@@ -5,32 +5,34 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface BookTableItem {
-  name: string;
+  author: string;
+  rating: number;
+  title: string;
   id: number;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: BookTableItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+  {id: 1, title: 'The Name of the Wind', rating: 10, author: 'Patrick Rothfuss'},
+  {id: 2, title: 'Harry Potter and the Chamber of Secrets', rating: 8.5, author: 'JK Rowling'},
+  {id: 3, title: 'Harry Potter and the Prisoner of Azkban', rating: 10, author: 'JK Rowling'},
+  {id: 4, title: 'Harry Potter and the Goblet of Fire', rating: 10, author: 'JK Rowling'},
+  {id: 5, title: 'The Red Knight', rating: 10, author: 'Miles Cameron'},
+  {id: 6, title: 'Dunstan', rating: 9, author: 'Conn Ignolian'},
+  {id: 7, title: 'Nitrogen', rating: 1, author: 'John Smith'},
+  {id: 8, title: 'Oxygen', rating: 3, author: 'John Smith'},
+  {id: 9, title: 'Fluorine', rating: 4, author: 'John Smith'},
+  {id: 10, title: 'Neon', rating: 7, author: 'John Smith'},
+  {id: 11, title: 'Sodium', rating: 6, author: 'John Smith'},
+  {id: 12, title: 'Magnesium', rating: 5, author: 'John Smith'},
+  {id: 13, title: 'Aluminum', rating: 1, author: 'John Smith'},
+  {id: 14, title: 'Silicon', rating: 0, author: 'John Smith'},
+  {id: 15, title: 'Phosphorus', rating: 3, author: 'John Doe'},
+  {id: 16, title: 'Sulfur', rating: 8, author: 'John Doe'},
+  {id: 17, title: 'Chlorine', rating: 2.5, author: 'John Doe'},
+  {id: 18, title: 'Argon', rating: 4.5, author: 'John Doe'},
+  {id: 19, title: 'Potassium', rating: 5.5, author: 'John Doe'},
+  {id: 20, title: 'Calcium', rating: 8, author: 'John Doe'},
 ];
 
 /**
@@ -94,7 +96,7 @@ export class BookTableDataSource extends DataSource<BookTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
+        case 'title': return compare(a.title, b.title, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }
@@ -102,7 +104,7 @@ export class BookTableDataSource extends DataSource<BookTableItem> {
   }
 }
 
-/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
+/** Simple sort comparator for example ID/title columns (for client-side sorting). */
 function compare(a, b, isAsc) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
