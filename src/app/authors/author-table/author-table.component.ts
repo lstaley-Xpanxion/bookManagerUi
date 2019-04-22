@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { AuthorTableDataSource } from './author-table-datasource';
+import {AuthorsService} from './../authors.service';
 
 @Component({
   selector: 'bm-author-table',
@@ -14,7 +15,7 @@ export class AuthorTableComponent implements AfterViewInit {
   dataSource: AuthorTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'firstName', 'lastName', 'rating'];
+  displayedColumns = ['id', 'firstName', 'lastName', 'rating', 'actions'];
 
   ngAfterViewInit() {
     this.dataSource = new AuthorTableDataSource(this.paginator, this.sort);
