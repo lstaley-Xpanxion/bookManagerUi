@@ -9,6 +9,8 @@ export class AuthorsTableDataSource implements DataSource<Author> {
   private authorsSubject = new BehaviorSubject<Author[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
 
+  public loading = this.loadingSubject.asObservable();
+
   constructor(private authorService: AuthorsService) {}
 
   connect(collectionViewer: CollectionViewer): Observable<Author[]> {
@@ -28,7 +30,6 @@ export class AuthorsTableDataSource implements DataSource<Author> {
   ) {
     console.log("loadAuthors");
     this.loadingSubject.next(true);
-    this.authorService.findAuthors();
     this.authorService
       .getAuthors(filter, sortOrder, pageNumber, pageSize)
       .pipe(finalize(() => this.loadingSubject.next(false)))
