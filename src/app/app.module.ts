@@ -1,19 +1,37 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BooksComponent } from './books/books.component';
-import { AuthorsComponent } from './authors/authors.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavComponent } from './nav/nav.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatTreeModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatSelectModule } from '@angular/material';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { BookTableComponent } from './books/book-table/book-table.component';
-import { AuthorTableComponent } from './authors/author-table/author-table.component';
-import { BookEditorComponent } from './books/book-editor/book-editor.component';
-import { AuthorEditorComponent } from './authors/author-editor/author-editor.component';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { BooksComponent } from "./books/books.component";
+import { AuthorsComponent } from "./authors/authors.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NavComponent } from "./nav/nav.component";
+import { LayoutModule } from "@angular/cdk/layout";
+import { HttpClientModule } from "@angular/common/http";
+
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatProgressSpinnerModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatGridListModule,
+  MatCardModule,
+  MatMenuModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatInputModule,
+  MatSelectModule
+} from "@angular/material";
+
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { BookTableComponent } from "./books/book-table/book-table.component";
+import { AuthorTableComponent } from "./authors/author-table/author-table.component";
+import { BookEditorComponent } from "./books/book-editor/book-editor.component";
+import { AuthorEditorComponent } from "./authors/author-editor/author-editor.component";
 
 @NgModule({
   declarations: [
@@ -33,6 +51,7 @@ import { AuthorEditorComponent } from './authors/author-editor/author-editor.com
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    HttpClientModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -46,9 +65,9 @@ import { AuthorEditorComponent } from './authors/author-editor/author-editor.com
     MatSortModule,
     MatInputModule,
     MatSelectModule,
-    MatTreeModule
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

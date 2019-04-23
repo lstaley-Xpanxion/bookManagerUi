@@ -1,28 +1,24 @@
-import { Injectable } from '@angular/core';
-import {
-  AfterViewInit,
-  Component,
-  ViewChild,
-  ViewEncapsulation
-} from "@angular/core";
-import { MatPaginator, MatSort } from "@angular/material";
-import { AuthorTableDataSource } from "./author-table/author-table-datasource";
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { map } from "rxjs/operators";
+import { Observable } from "rxjs";
+
+import { Author } from "./../models/author";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthorsService {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  dataSource: AuthorTableDataSource;
+  apiUrl = "http://localhost:8084/bookManager/api";
+  constructor(private http: HttpClient) {}
 
-  constructor() {}
-
-  ngAfterViewInit() {
-    this.dataSource = new AuthorTableDataSource(this.paginator, this.sort);
-  }
-
-  getAuthors() {
-    return;
+  getAuthors(
+    filter: string,
+    sortOrder: string,
+    pageNumber: number,
+    pageSize: number
+  ): Observable<Author[]> {
+    console.log("getAuthors");
+    return this.http.get<Author[]>(this.apiUrl + "/authors");
   }
 }
