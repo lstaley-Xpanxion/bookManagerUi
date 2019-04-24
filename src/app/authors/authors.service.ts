@@ -19,6 +19,12 @@ export class AuthorsService {
     pageSize: number
   ): Observable<Author[]> {
     console.log("getAuthors");
-    return this.http.get<Author[]>(this.apiUrl + "/authors");
+    return this.http.get<Author[]>(
+      this.apiUrl +
+        "/authors?pageNumber=" +
+        pageNumber +
+        "&pageSize=" +
+        pageSize
+    );
   }
 }
