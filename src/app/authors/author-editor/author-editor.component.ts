@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { StringMapWithRename } from "@angular/compiler/src/compiler_facade_interface";
 import { Author } from "../../models/author";
 
@@ -8,6 +8,8 @@ import { Author } from "../../models/author";
   styleUrls: ["./author-editor.component.scss"]
 })
 export class AuthorEditorComponent implements OnInit {
+  @Input() id: number;
+
   author: Author = {
     id: 1,
     firstName: "",
@@ -16,7 +18,11 @@ export class AuthorEditorComponent implements OnInit {
     rating: 8
   };
 
-  constructor() {}
+  constructor() {
+    console.log("id " + this.id);
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("id " + this.id);
+  }
 }

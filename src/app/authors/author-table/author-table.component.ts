@@ -9,6 +9,7 @@ import { MatPaginator, MatSort } from "@angular/material";
 import { AuthorsTableDataSource } from "./authors-table-datasource";
 import { AuthorsService } from "./../authors.service";
 import { tap } from "rxjs/operators";
+import { merge } from "rxjs/internal/observable/merge";
 
 @Component({
   selector: "bm-author-table",
@@ -43,8 +44,14 @@ export class AuthorTableComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.paginator.page.pipe(tap(() => this.loadAuthorsPage())).subscribe();
-    console.log(this.paginator.pageSize + " size2");
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+
+    merge(this.sort.sortChange, this.paginator.page)
+      .pipe(tap(() => this.loadAuthorsPage()))
+      .subscribe();
+
+    //  this.paginator.page.pipe(tap(() => this.loadAuthorsPage())).subscribe();
+    // console.log(this.paginator.pageSize + " size2");
   }
 
   loadAuthorsPage() {

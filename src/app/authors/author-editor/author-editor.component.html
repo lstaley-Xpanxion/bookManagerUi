@@ -8,7 +8,9 @@
         matInput
         #firstNameInput
         placeholder="First Name"
-        [(ngModel)]="author.firstName" required
+        [(ngModel)]="author.firstName"
+        name="firstName"
+        required
       />
     </mat-form-field>
     <br /><br />
@@ -18,29 +20,40 @@
         matInput
         #lastNameInput
         placeholder="Last Name"
-        [(ngModel)]="author.lastName" required
+        [(ngModel)]="author.lastName"
+        name="lastName"
+        required
       />
     </mat-form-field>
-    <br/><br/>
+    <br /><br />
     <mat-form-field>
-      <mat-label id="descriptionLabel" for="descriptionInput" >Description</mat-label>
-      <textarea id="descriptionInput"
+      <mat-label id="descriptionLabel" for="descriptionInput"
+        >Description</mat-label
+      >
+      <textarea
+        id="descriptionInput"
         matInput
         #descriptionInput
         placeholder="Description"
-        [(ngModel)]="author.description" >
+        [(ngModel)]="author.description"
+        name="description"
+      >
       </textarea>
     </mat-form-field>
     <br /><br />
-<mat-form-field>
+    <mat-form-field>
       <input
-        id="rating" type="number" step=".5"
+        id="rating"
+        type="number"
+        step=".5"
         matInput
         #ratingInput
         placeholder="Rating"
-        [(ngModel)]="author.rating" required
+        [(ngModel)]="author.rating"
+        name="rating"
+        required
       />
     </mat-form-field>
-    <br /><br/>
+    <br /><br />
   </form>
 </div>
