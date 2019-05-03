@@ -3,18 +3,18 @@ import { Author } from "./../../models/author";
 import { AuthorsService } from "../authors.service";
 import { BehaviorSubject, of } from "rxjs";
 import { Observable } from "rxjs";
-import { catchError, finalize } from "rxjs/operators";
+import { catchError, finalize, map } from "rxjs/operators";
 
 export class AuthorsTableDataSource implements DataSource<Author> {
   private authorsSubject = new BehaviorSubject<Author[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
+  authors: Author[];
 
   public loading = this.loadingSubject.asObservable();
 
   constructor(private authorService: AuthorsService) {}
 
   connect(collectionViewer: CollectionViewer): Observable<Author[]> {
-    console.log("connect");
     return this.authorsSubject.asObservable();
   }
   disconnect(collectionViewer: CollectionViewer): void {
@@ -28,11 +28,24 @@ export class AuthorsTableDataSource implements DataSource<Author> {
     pageNumber: number,
     pageSize: number
   ) {
-    console.log("loadAuthors");
     this.loadingSubject.next(true);
-    this.authorService
+    /*  this.authorService
       .getAuthors(filter, sortOrder, pageNumber, pageSize)
       .pipe(finalize(() => this.loadingSubject.next(false)))
-      .subscribe(authors => this.authorsSubject.next(authors));
+      .subscribe(authors => this.authorsSubject.next(authors)); */
+
+    this.authorService
+      .getAuthors2(filter, sortOrder, pageNumber, pageSize)
+      .pipe(
+        map((resp: any) => {
+          console.log("resp " + resp);
+          console.log("embedded " + resp._embedded);
+          this.authors = resp._embedded.authors;
+        })
+      )
+      .pipe(finalize(() => this.loadingSubject.next(false)))
+      .subscribe(res => this.authorsSubject.next(this.authors));
+
+    console.log("authors " + this.authors);
   }
 }

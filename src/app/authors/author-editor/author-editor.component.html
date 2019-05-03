@@ -1,14 +1,20 @@
 <div>
   <h2>Create/Edit an Author</h2>
 
-  <form id="authorEditorForm">
+  <form
+    id="authorEditorForm"
+    class="form-container"
+    [formGroup]="authorForm"
+    (ngSubmit)="saveAuthor()"
+  >
     <mat-form-field>
       <input
         id="firstNameInput"
+        type="text"
         matInput
         #firstNameInput
         placeholder="First Name"
-        [(ngModel)]="author.firstName"
+        formControlName="firstName"
         name="firstName"
         required
       />
@@ -17,10 +23,11 @@
     <mat-form-field>
       <input
         id="lastNameInput"
+        type="text"
         matInput
         #lastNameInput
         placeholder="Last Name"
-        [(ngModel)]="author.lastName"
+        formControlName="lastName"
         name="lastName"
         required
       />
@@ -35,7 +42,7 @@
         matInput
         #descriptionInput
         placeholder="Description"
-        [(ngModel)]="author.description"
+        formControlName="description"
         name="description"
       >
       </textarea>
@@ -49,11 +56,21 @@
         matInput
         #ratingInput
         placeholder="Rating"
-        [(ngModel)]="author.rating"
+        formControlName="rating"
         name="rating"
         required
       />
     </mat-form-field>
+    <br /><br />
+    <button
+      id="saveAuthorButton"
+      mat-raised-button
+      class="save-button"
+      color="primary"
+      type="submit"
+    >
+      Save
+    </button>
     <br /><br />
   </form>
 </div>

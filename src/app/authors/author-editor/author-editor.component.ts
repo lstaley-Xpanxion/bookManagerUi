@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { StringMapWithRename } from "@angular/compiler/src/compiler_facade_interface";
 import { Author } from "../../models/author";
+import { AuthorsService } from "../authors.service";
+import { FormGroup, FormControl } from "@angular/forms";
 
 @Component({
   selector: "bm-author-editor",
@@ -8,21 +9,25 @@ import { Author } from "../../models/author";
   styleUrls: ["./author-editor.component.scss"]
 })
 export class AuthorEditorComponent implements OnInit {
-  @Input() id: number;
+  @Input() id?: number;
 
-  author: Author = {
-    id: 1,
-    firstName: "",
-    lastName: "",
-    description: "",
-    rating: 8
-  };
+  authorForm = new FormGroup({
+    firstName: new FormControl(""),
+    lastName: new FormControl(""),
+    description: new FormControl(""),
+    rating: new FormControl()
+  });
 
-  constructor() {
-    console.log("id " + this.id);
-  }
+  constructor(private authorService: AuthorsService) {}
 
-  ngOnInit() {
-    console.log("id " + this.id);
+  ngOnInit() {}
+
+  saveAuthor() {
+    const author = new Author();
+    author.firstName = this.authorForm.value.firstName;
+    author.lastName = this.authorForm.value.lastName;
+    author.rating = this.authorForm.value.rating;
+    console.log("Author: " + author);
+    this.authorService.createAuthor(author).subscribe(response => {});
   }
 }

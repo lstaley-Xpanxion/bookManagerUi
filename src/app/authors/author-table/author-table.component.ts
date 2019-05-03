@@ -31,10 +31,8 @@ export class AuthorTableComponent implements OnInit, AfterViewInit {
   constructor(private authorsService: AuthorsService) {}
 
   ngOnInit(): void {
-    console.log("test");
     this.recordCount = 10;
     this.dataSource = new AuthorsTableDataSource(this.authorsService);
-    console.log(this.paginator.pageSize + " size");
     this.dataSource.loadAuthors(
       "",
       "asc",
