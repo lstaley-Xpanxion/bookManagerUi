@@ -1,8 +1,14 @@
-.full-width-table {
+full-width-table {
   width: 100%;
 }
+
 /* center headers for tables */
 .mat-sort-header-container {
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
+}
+
+.button-right {
+  float: right;
+  margin-right: 20px;
 }

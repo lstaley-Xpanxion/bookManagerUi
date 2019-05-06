@@ -28,28 +28,9 @@ export class HttpResponseInterceptor implements HttpInterceptor {
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
           console.log("event--->>>", event);
-
-          // event = event.clone({ body: this.modifyBody(event.body) });
         }
         return event;
       })
-      /* catchError((error: HttpErrorResponse) => {
-        let data = {};
-        data = {
-          reason: error && error.error.reason ? error.error.reason : "",
-          status: error.status
-        };
-        this.errorDialogService.openDialog(data);
-        return throwError(error);
-      }) */
     );
-  }
-
-  private modifyBody(body: any) {
-    console.log("modfiy");
-    if (body.data._embedded) {
-      console.log("if");
-      body.data = body.data;
-    }
   }
 }

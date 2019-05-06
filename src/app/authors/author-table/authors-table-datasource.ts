@@ -29,13 +29,9 @@ export class AuthorsTableDataSource implements DataSource<Author> {
     pageSize: number
   ) {
     this.loadingSubject.next(true);
-    /*  this.authorService
-      .getAuthors(filter, sortOrder, pageNumber, pageSize)
-      .pipe(finalize(() => this.loadingSubject.next(false)))
-      .subscribe(authors => this.authorsSubject.next(authors)); */
 
     this.authorService
-      .getAuthors2(filter, sortOrder, pageNumber, pageSize)
+      .getAuthors(filter, sortOrder, pageNumber, pageSize)
       .pipe(
         map((resp: any) => {
           console.log("resp " + resp);
@@ -44,7 +40,7 @@ export class AuthorsTableDataSource implements DataSource<Author> {
         })
       )
       .pipe(finalize(() => this.loadingSubject.next(false)))
-      .subscribe(res => this.authorsSubject.next(this.authors));
+      .subscribe(() => this.authorsSubject.next(this.authors));
 
     console.log("authors " + this.authors);
   }

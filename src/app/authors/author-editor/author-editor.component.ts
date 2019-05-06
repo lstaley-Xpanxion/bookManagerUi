@@ -14,7 +14,6 @@ export class AuthorEditorComponent implements OnInit {
   authorForm = new FormGroup({
     firstName: new FormControl(""),
     lastName: new FormControl(""),
-    description: new FormControl(""),
     rating: new FormControl()
   });
 

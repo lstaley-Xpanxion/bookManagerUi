@@ -1,42 +1,71 @@
 <div>
   <h2>Create/Edit a Book</h2>
-  <form id="editorForm">
+  <form
+    id="editorForm"
+    [formGroup]="bookForm"
+    (ngSubmit)="saveBook()"
+    class="form-container"
+  >
     <mat-form-field>
       <input
         id="titleInput"
         matInput
         #titleInput
+        type="text"
         placeholder="Title"
-        [(ngModel)]="book.title" required
+        formControlName="title"
+        required
       />
     </mat-form-field>
     <br /><br />
     <mat-form-field>
-      <mat-label id="descriptionLabel" for="descriptionInput" >Description</mat-label>
-      <textarea id="descriptionInput"
+      <mat-label id="descriptionLabel" for="descriptionInput"
+        >Description</mat-label
+      >
+      <textarea
+        id="descriptionInput"
         matInput
         #descriptionInput
         placeholder="Description"
-        [(ngModel)]="book.description" >
+        formControlName="description"
+      >
       </textarea>
     </mat-form-field>
     <br /><br />
-<mat-form-field>
+    <mat-form-field>
       <input
-        id="rating" type="number" step=".5"
+        id="rating"
+        type="number"
+        step=".5"
         matInput
         #ratingInput
         placeholder="Rating"
-        [(ngModel)]="book.rating" required
+        formControlName="rating"
+        required
       />
     </mat-form-field>
-    <br /><br/>
+    <br /><br />
     <mat-form-field>
       <mat-label id="authorLabel" for="authorSelect">Author</mat-label>
-     <mat-select id="authorSelect" #author [(ngModel)]="book.author" aria-placeholder="Author">
-       <mat-option *ngFor="let author of authors">{{author}}</mat-option>
-     </mat-select>
-
+      <mat-select
+        id="authorSelect"
+        #author
+        formControlName="author"
+        aria-placeholder="Author"
+      >
+        <mat-option *ngFor="let author of authors">{{ author }}</mat-option>
+      </mat-select>
     </mat-form-field>
+    <br /><br />
+    <button
+      id="saveAuthorButton"
+      mat-raised-button
+      class="save-button"
+      color="primary"
+      type="submit"
+    >
+      Save
+    </button>
+    <br /><br />
   </form>
 </div>
