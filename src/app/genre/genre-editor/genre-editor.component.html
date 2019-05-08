@@ -1,0 +1,47 @@
+<div>
+  <h2>Create/Edit a Collection</h2>
+  <form
+    id="editorForm"
+    [formGroup]="genreForm"
+    (ngSubmit)="saveGenre()"
+    class="form-container"
+  >
+    <mat-form-field>
+      <input
+        id="nameInput"
+        matInput
+        #nameInput
+        type="text"
+        placeholder="Name"
+        formControlName="name"
+        required
+      />
+    </mat-form-field>
+    <br /><br />
+    <mat-form-field>
+      <mat-label id="descriptionLabel" for="descriptionInput"
+        >Description</mat-label
+      >
+      <textarea
+        id="descriptionInput"
+        matInput
+        #descriptionInput
+        placeholder="Description"
+        formControlName="description"
+        required
+      >
+      </textarea>
+    </mat-form-field>
+    <br /><br />
+    <button
+      id="saveCollectionButton"
+      mat-raised-button
+      class="save-button"
+      color="primary"
+      type="submit"
+    >
+      Save
+    </button>
+    <br /><br />
+  </form>
+</div>

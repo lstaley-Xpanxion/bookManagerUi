@@ -41,6 +41,9 @@ import { CollectionEditorComponent } from './collections/collection-editor/colle
 import { SeriesComponent } from './series/series.component';
 import { SeriesTableComponent } from './series/series-table/series-table.component';
 import { SeriesEditorComponent } from './series/series-editor/series-editor.component';
+import { GenreComponent } from './genre/genre.component';
+import { GenreTableComponent } from './genre/genre-table/genre-table.component';
+import { GenreEditorComponent } from './genre/genre-editor/genre-editor.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,10 @@ import { SeriesEditorComponent } from './series/series-editor/series-editor.comp
     CollectionEditorComponent,
     SeriesComponent,
     SeriesTableComponent,
-    SeriesEditorComponent
+    SeriesEditorComponent,
+    GenreComponent,
+    GenreTableComponent,
+    GenreEditorComponent
   ],
   imports: [
     BrowserModule,

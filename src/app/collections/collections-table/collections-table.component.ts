@@ -17,7 +17,7 @@ export class CollectionsTableComponent implements OnInit, AfterViewInit {
   recordCount: number;
   defaultPageSize = 5;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ["name", "rating", "authors", "books", "actions"];
+  displayedColumns = ["id", "name", "description", "actions"];
 
   constructor(private collectionService: CollectionsService) {}
 

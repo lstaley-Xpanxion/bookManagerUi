@@ -10,6 +10,8 @@ import { CollectionsComponent } from "./collections/collections.component";
 import { CollectionEditorComponent } from "./collections/collection-editor/collection-editor.component";
 import { SeriesComponent } from "./series/series.component";
 import { SeriesEditorComponent } from "./series/series-editor/series-editor.component";
+import { GenreEditorComponent } from "./genre/genre-editor/genre-editor.component";
+import { GenreComponent } from "./genre/genre.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "dashboard" },
@@ -23,7 +25,9 @@ const routes: Routes = [
   { path: "collections", component: CollectionsComponent },
   { path: "collections/editor", component: CollectionEditorComponent },
   { path: "series", component: SeriesComponent },
-  { path: "series/editor", component: SeriesEditorComponent }
+  { path: "series/editor", component: SeriesEditorComponent },
+  { path: "genres", component: GenreComponent },
+  { path: "genres/editor", component: GenreEditorComponent }
 ];
 
 @NgModule({
