@@ -1,6 +1,6 @@
 import { DataSource, CollectionViewer } from "@angular/cdk/collections";
 import { Author } from "./../../models/author";
-import { AuthorsService } from "../authors.service";
+import { AuthorsService } from "../../services/authors.service";
 import { BehaviorSubject, of } from "rxjs";
 import { Observable } from "rxjs";
 import { catchError, finalize, map } from "rxjs/operators";

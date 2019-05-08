@@ -6,6 +6,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { BookEditorComponent } from "./books/book-editor/book-editor.component";
 import { AuthorEditorComponent } from "./authors/author-editor/author-editor.component";
 import { LoginComponent } from "./login/login.component";
+import { CollectionsComponent } from "./collections/collections.component";
+import { CollectionEditorComponent } from "./collections/collection-editor/collection-editor.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "dashboard" },
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: "books/editor", component: BookEditorComponent },
   { path: "authors/editor/:id", component: AuthorEditorComponent },
   { path: "authors/editor", component: AuthorEditorComponent },
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  { path: "collections", component: CollectionsComponent },
+  { path: "collections/editor", component: CollectionEditorComponent }
 ];
 
 @NgModule({

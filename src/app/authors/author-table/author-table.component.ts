@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import { MatPaginator, MatSort } from "@angular/material";
 import { AuthorsTableDataSource } from "./authors-table-datasource";
-import { AuthorsService } from "./../authors.service";
+import { AuthorsService } from "../../services/authors.service";
 import { tap } from "rxjs/operators";
 import { merge } from "rxjs/internal/observable/merge";
 

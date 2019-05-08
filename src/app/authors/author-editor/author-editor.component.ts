@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Author } from "../../models/author";
-import { AuthorsService } from "../authors.service";
+import { AuthorsService } from "../../services/authors.service";
 import { FormGroup, FormControl } from "@angular/forms";
 
 @Component({

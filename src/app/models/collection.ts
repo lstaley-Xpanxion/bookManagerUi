@@ -5,6 +5,7 @@ import { Genre } from "./genre";
 
 export class Collection {
   id: number;
+  name: string;
   description: string;
   rating: number;
   authors: Author[];

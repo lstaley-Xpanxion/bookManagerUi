@@ -1,19 +1,19 @@
 <div>
-  <h2>Create/Edit a Book</h2>
+  <h2>Create/Edit a Collection</h2>
   <form
     id="editorForm"
-    [formGroup]="bookForm"
-    (ngSubmit)="saveBook()"
+    [formGroup]="collectionForm"
+    (ngSubmit)="saveCollection()"
     class="form-container"
   >
     <mat-form-field>
       <input
-        id="titleInput"
+        id="nameInput"
         matInput
-        #titleInput
+        #nameInput
         type="text"
-        placeholder="Title"
-        formControlName="title"
+        placeholder="Name"
+        formControlName="name"
         required
       />
     </mat-form-field>
@@ -28,6 +28,7 @@
         #descriptionInput
         placeholder="Description"
         formControlName="description"
+        required
       >
       </textarea>
     </mat-form-field>
@@ -53,7 +54,6 @@
         formControlName="author"
         aria-placeholder="Author"
         [compareWith]="compareAuthors"
-        required
       >
         <mat-option *ngFor="let author of authors" [value]="author"
           >{{ author.firstName }}{{ author.lastName }}</mat-option
@@ -61,8 +61,23 @@
       </mat-select>
     </mat-form-field>
     <br /><br />
+    <mat-form-field>
+      <mat-label id="booksLabel" for="bookSelect">Books</mat-label>
+      <mat-select
+        id="bookSelect"
+        #author
+        formControlName="book"
+        aria-placeholder="Books"
+        [compareWith]="compareBooks"
+      >
+        <mat-option *ngFor="let book of books" [value]="book">{{
+          book.title
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br /><br />
     <button
-      id="saveAuthorButton"
+      id="saveCollectionButton"
       mat-raised-button
       class="save-button"
       color="primary"

@@ -35,6 +35,9 @@ import { BookEditorComponent } from "./books/book-editor/book-editor.component";
 import { AuthorEditorComponent } from "./authors/author-editor/author-editor.component";
 import { LoginComponent } from "./login/login.component";
 import { HttpResponseInterceptor } from "./interceptor/httpresponse-interceptor";
+import { CollectionsTableComponent } from './collections/collections-table/collections-table.component';
+import { CollectionsComponent } from './collections/collections.component';
+import { CollectionEditorComponent } from './collections/collection-editor/collection-editor.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { HttpResponseInterceptor } from "./interceptor/httpresponse-interceptor"
     AuthorTableComponent,
     BookEditorComponent,
     AuthorEditorComponent,
-    LoginComponent
+    LoginComponent,
+    CollectionsTableComponent,
+    CollectionsComponent,
+    CollectionEditorComponent
   ],
   imports: [
     BrowserModule,
