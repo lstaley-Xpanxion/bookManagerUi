@@ -1,0 +1,91 @@
+<div>
+  <h2>Create/Edit a Series</h2>
+  <form
+    id="editorForm"
+    [formGroup]="seriesForm"
+    (ngSubmit)="saveSeries()"
+    class="form-container"
+  >
+    <mat-form-field>
+      <input
+        id="nameInput"
+        matInput
+        #nameInput
+        type="text"
+        placeholder="Name"
+        formControlName="name"
+        required
+      />
+    </mat-form-field>
+    <br /><br />
+    <mat-form-field>
+      <mat-label id="descriptionLabel" for="descriptionInput"
+        >Description</mat-label
+      >
+      <textarea
+        id="descriptionInput"
+        matInput
+        #descriptionInput
+        placeholder="Description"
+        formControlName="description"
+        required
+      >
+      </textarea>
+    </mat-form-field>
+    <br /><br />
+    <mat-form-field>
+      <input
+        id="rating"
+        type="number"
+        step=".5"
+        matInput
+        #ratingInput
+        placeholder="Rating"
+        formControlName="rating"
+        required
+      />
+    </mat-form-field>
+    <br /><br />
+    <mat-form-field>
+      <mat-label id="authorLabel" for="authorSelect">Author</mat-label>
+      <mat-select
+        id="authorSelect"
+        #author
+        formControlName="author"
+        aria-placeholder="Author"
+        [compareWith]="compareAuthors"
+        required
+      >
+        <mat-option *ngFor="let author of authors" [value]="author"
+          >{{ author.firstName }}{{ author.lastName }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <br /><br />
+    <mat-form-field>
+      <mat-label id="booksLabel" for="bookSelect">Books</mat-label>
+      <mat-select
+        id="bookSelect"
+        #author
+        formControlName="book"
+        aria-placeholder="Books"
+        [compareWith]="compareBooks"
+      >
+        <mat-option *ngFor="let book of books" [value]="book">{{
+          book.title
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br /><br />
+    <button
+      id="saveSeriesButton"
+      mat-raised-button
+      class="save-button"
+      color="primary"
+      type="submit"
+    >
+      Save
+    </button>
+    <br /><br />
+  </form>
+</div>

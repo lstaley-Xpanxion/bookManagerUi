@@ -38,6 +38,9 @@ import { HttpResponseInterceptor } from "./interceptor/httpresponse-interceptor"
 import { CollectionsTableComponent } from './collections/collections-table/collections-table.component';
 import { CollectionsComponent } from './collections/collections.component';
 import { CollectionEditorComponent } from './collections/collection-editor/collection-editor.component';
+import { SeriesComponent } from './series/series.component';
+import { SeriesTableComponent } from './series/series-table/series-table.component';
+import { SeriesEditorComponent } from './series/series-editor/series-editor.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { CollectionEditorComponent } from './collections/collection-editor/colle
     LoginComponent,
     CollectionsTableComponent,
     CollectionsComponent,
-    CollectionEditorComponent
+    CollectionEditorComponent,
+    SeriesComponent,
+    SeriesTableComponent,
+    SeriesEditorComponent
   ],
   imports: [
     BrowserModule,

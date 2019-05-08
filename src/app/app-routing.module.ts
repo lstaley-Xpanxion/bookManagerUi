@@ -8,6 +8,8 @@ import { AuthorEditorComponent } from "./authors/author-editor/author-editor.com
 import { LoginComponent } from "./login/login.component";
 import { CollectionsComponent } from "./collections/collections.component";
 import { CollectionEditorComponent } from "./collections/collection-editor/collection-editor.component";
+import { SeriesComponent } from "./series/series.component";
+import { SeriesEditorComponent } from "./series/series-editor/series-editor.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "dashboard" },
@@ -19,7 +21,9 @@ const routes: Routes = [
   { path: "authors/editor", component: AuthorEditorComponent },
   { path: "login", component: LoginComponent },
   { path: "collections", component: CollectionsComponent },
-  { path: "collections/editor", component: CollectionEditorComponent }
+  { path: "collections/editor", component: CollectionEditorComponent },
+  { path: "series", component: SeriesComponent },
+  { path: "series/editor", component: SeriesEditorComponent }
 ];
 
 @NgModule({
