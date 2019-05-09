@@ -44,6 +44,7 @@ import { SeriesEditorComponent } from './series/series-editor/series-editor.comp
 import { GenreComponent } from './genre/genre.component';
 import { GenreTableComponent } from './genre/genre-table/genre-table.component';
 import { GenreEditorComponent } from './genre/genre-editor/genre-editor.component';
+import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { GenreEditorComponent } from './genre/genre-editor/genre-editor.componen
     SeriesEditorComponent,
     GenreComponent,
     GenreTableComponent,
-    GenreEditorComponent
+    GenreEditorComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -25,8 +25,11 @@ export class BookService {
     return this.http.get(this.apiUrl + "/books");
   }
 
+  getBook(id) {
+    return this.http.get(this.apiUrl + "/book/" + id);
+  }
+
   createAuthor(book: Book): Observable<Book> {
-    console.log("bookService - createAuthor");
     return this.http.put<Book>(this.apiUrl + "/book", book);
     // error catching to add
   }

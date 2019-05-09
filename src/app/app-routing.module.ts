@@ -12,6 +12,7 @@ import { SeriesComponent } from "./series/series.component";
 import { SeriesEditorComponent } from "./series/series-editor/series-editor.component";
 import { GenreEditorComponent } from "./genre/genre-editor/genre-editor.component";
 import { GenreComponent } from "./genre/genre.component";
+import { PageNotFoundComponent } from "./errors/page-not-found/page-not-found.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "dashboard" },
@@ -19,15 +20,20 @@ const routes: Routes = [
   { path: "books", component: BooksComponent },
   { path: "authors", component: AuthorsComponent },
   { path: "books/editor", component: BookEditorComponent },
+  { path: "books/editor/:id", component: BookEditorComponent },
   { path: "authors/editor/:id", component: AuthorEditorComponent },
   { path: "authors/editor", component: AuthorEditorComponent },
   { path: "login", component: LoginComponent },
   { path: "collections", component: CollectionsComponent },
   { path: "collections/editor", component: CollectionEditorComponent },
+  { path: "collections/editor:id", component: CollectionEditorComponent },
   { path: "series", component: SeriesComponent },
   { path: "series/editor", component: SeriesEditorComponent },
+  { path: "series/editor:id", component: SeriesEditorComponent },
   { path: "genres", component: GenreComponent },
-  { path: "genres/editor", component: GenreEditorComponent }
+  { path: "genres/editor", component: GenreEditorComponent },
+  { path: "genres/editor:id", component: GenreEditorComponent },
+  { path: "**", component: PageNotFoundComponent }
 ];
 
 @NgModule({

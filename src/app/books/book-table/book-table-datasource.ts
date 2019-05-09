@@ -48,7 +48,5 @@ export class BookTableDataSource extends DataSource<Book> {
       )
       .pipe(finalize(() => this.loadingSubject.next(false)))
       .subscribe(() => this.booksSubject.next(this.books));
-
-    console.log("books " + this.books);
   }
 }

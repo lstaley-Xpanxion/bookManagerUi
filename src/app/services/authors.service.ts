@@ -37,11 +37,14 @@ export class AuthorsService {
     return this.http.get(this.apiUrl + "/authors");
   }
 
+  getAuthor(id: string) {
+    return this.http.get<Author>(this.apiUrl + "/author/" + id);
+  }
+
   /**
    * Creates/updates an Authors
    */
   createAuthor(author: Author): Observable<Author> {
-    console.log("authorService createAuthor");
     return this.http.put<Author>(this.apiUrl + "/author", author);
     // error catching to add
   }

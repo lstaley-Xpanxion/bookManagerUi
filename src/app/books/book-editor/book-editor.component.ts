@@ -6,6 +6,7 @@ import { AuthorsService } from "src/app/services/authors.service";
 import { Author } from "src/app/models/author";
 import { Observable } from "rxjs";
 import { tap, map } from "rxjs/operators";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "bm-book-editor",
@@ -14,24 +15,29 @@ import { tap, map } from "rxjs/operators";
 })
 export class BookEditorComponent implements OnInit {
   bookForm = new FormGroup({
-    title: new FormControl(""),
-    description: new FormControl(""),
+    title: new FormControl(),
+    description: new FormControl(),
     rating: new FormControl(),
-    author: new FormControl(Author),
+    author: new FormControl(),
     series: new FormControl(),
     collection: new FormControl()
   });
 
   authors: Author[];
-  // ["J.K Rowling", "Patrick Rothfuss", "Dan Brown"];
 
   constructor(
     private bookService: BookService,
-    private authorService: AuthorsService
+    private authorService: AuthorsService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.loadAuthors();
+    const id = this.route.snapshot.paramMap.get("id");
+    if (id != null) {
+      this.populateForm(id);
+    }
+    console.log(id);
   }
 
   saveBook() {
@@ -44,13 +50,11 @@ export class BookEditorComponent implements OnInit {
   }
 
   loadAuthors() {
-    console.log("load Authors");
     return this.authorService
       .getAllAuthors()
       .pipe(
         map((resp: any) => {
           this.authors = resp._embedded.authors;
-          console.log(this.authors);
         })
       )
       .subscribe();
@@ -58,5 +62,18 @@ export class BookEditorComponent implements OnInit {
 
   compareAuthors(a1: Author, a2: Author): boolean {
     return a1 && a2 ? a1.id === a2.id : a1 === a2;
+  }
+
+  private populateForm(id) {
+    this.bookService
+      .getBook(id)
+      .pipe(
+        map((resp: any) => {
+          this.bookForm.get("title").patchValue(resp.title);
+          this.bookForm.get("description").patchValue(resp.description);
+          this.bookForm.get("rating").patchValue(resp.rating);
+        })
+      )
+      .subscribe();
   }
 }

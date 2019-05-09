@@ -3,7 +3,7 @@ import { Author } from "./../../models/author";
 import { AuthorsService } from "../../services/authors.service";
 import { BehaviorSubject, of } from "rxjs";
 import { Observable } from "rxjs";
-import { catchError, finalize, map } from "rxjs/operators";
+import { finalize, map } from "rxjs/operators";
 
 export class AuthorsTableDataSource implements DataSource<Author> {
   private authorsSubject = new BehaviorSubject<Author[]>([]);
@@ -34,14 +34,10 @@ export class AuthorsTableDataSource implements DataSource<Author> {
       .getAuthors(filter, sortOrder, pageNumber, pageSize)
       .pipe(
         map((resp: any) => {
-          console.log("resp " + resp);
-          console.log("embedded " + resp._embedded);
           this.authors = resp._embedded.authors;
         })
       )
       .pipe(finalize(() => this.loadingSubject.next(false)))
       .subscribe(() => this.authorsSubject.next(this.authors));
-
-    console.log("authors " + this.authors);
   }
 }

@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Author } from "../../models/author";
 import { AuthorsService } from "../../services/authors.service";
 import { FormGroup, FormControl } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "bm-author-editor",
@@ -9,17 +11,24 @@ import { FormGroup, FormControl } from "@angular/forms";
   styleUrls: ["./author-editor.component.scss"]
 })
 export class AuthorEditorComponent implements OnInit {
-  @Input() id?: number;
-
   authorForm = new FormGroup({
-    firstName: new FormControl(""),
-    lastName: new FormControl(""),
+    firstName: new FormControl(),
+    lastName: new FormControl(),
     rating: new FormControl()
   });
 
-  constructor(private authorService: AuthorsService) {}
+  constructor(
+    private authorService: AuthorsService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const id = this.route.snapshot.paramMap.get("id");
+    if (id != null) {
+      this.populateForm(id);
+    }
+    console.log("id " + id);
+  }
 
   saveAuthor() {
     const author = new Author();
@@ -27,6 +36,19 @@ export class AuthorEditorComponent implements OnInit {
     author.lastName = this.authorForm.value.lastName;
     author.rating = this.authorForm.value.rating;
     console.log("Author: " + author);
-    this.authorService.createAuthor(author).subscribe(response => {});
+    this.authorService.createAuthor(author).subscribe(() => {});
+  }
+
+  private populateForm(id) {
+    this.authorService
+      .getAuthor(id)
+      .pipe(
+        map((resp: any) => {
+          this.authorForm.get("firstName").patchValue(resp.firstName);
+          this.authorForm.get("lastName").patchValue(resp.lastName);
+          this.authorForm.get("rating").patchValue(resp.rating);
+        })
+      )
+      .subscribe();
   }
 }
