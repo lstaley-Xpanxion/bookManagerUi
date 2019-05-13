@@ -17,21 +17,24 @@ export class AuthorEditorComponent implements OnInit {
     rating: new FormControl()
   });
 
+  id: any;
+
   constructor(
     private authorService: AuthorsService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get("id");
-    if (id != null) {
-      this.populateForm(id);
+    this.id = this.route.snapshot.paramMap.get("id");
+    if (this.id != null) {
+      this.populateForm(this.id);
     }
-    console.log("id " + id);
+    console.log("id " + this.id);
   }
 
   saveAuthor() {
     const author = new Author();
+    author.id = this.id;
     author.firstName = this.authorForm.value.firstName;
     author.lastName = this.authorForm.value.lastName;
     author.rating = this.authorForm.value.rating;

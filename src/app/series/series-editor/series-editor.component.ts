@@ -9,6 +9,7 @@ import { BookService } from "src/app/services/book.service";
 import { Collection } from "src/app/models/collection";
 import { map } from "rxjs/operators";
 import { SeriesService } from "src/app/services/series.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "bm-series-editor",
@@ -17,8 +18,8 @@ import { SeriesService } from "src/app/services/series.service";
 })
 export class SeriesEditorComponent implements OnInit {
   seriesForm = new FormGroup({
-    name: new FormControl(""),
-    description: new FormControl(""),
+    name: new FormControl(),
+    description: new FormControl(),
     rating: new FormControl(),
     author: new FormControl(),
     book: new FormControl(),
@@ -28,21 +29,28 @@ export class SeriesEditorComponent implements OnInit {
   authors: Author[];
   books: Book[];
   collection: Collection;
+  id: any;
 
   constructor(
     private seriesSerivce: SeriesService,
-    private collectionService: CollectionsService,
     private authorService: AuthorsService,
-    private bookService: BookService
+    private bookService: BookService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.loadAuthors();
     this.loadBooks();
+    this.id = this.route.snapshot.paramMap.get("id");
+    if (this.id != null) {
+      this.populateForm(this.id);
+    }
+    console.log("id " + this.id);
   }
 
   saveSeries() {
     const series = new Series();
+    series.id = this.id;
     series.name = this.seriesForm.value.name;
     series.description = this.seriesForm.value.description;
     series.rating = this.seriesForm.value.rating;
@@ -74,6 +82,19 @@ export class SeriesEditorComponent implements OnInit {
       .pipe(
         map((resp: any) => {
           this.books = resp._embedded.books;
+        })
+      )
+      .subscribe();
+  }
+
+  private populateForm(id) {
+    this.seriesSerivce
+      .getASeries(id)
+      .pipe(
+        map((resp: any) => {
+          this.seriesForm.get("description").patchValue(resp.description);
+          this.seriesForm.get("name").patchValue(resp.name);
+          this.seriesForm.get("rating").patchValue(resp.rating);
         })
       )
       .subscribe();

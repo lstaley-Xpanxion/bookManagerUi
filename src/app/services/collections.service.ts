@@ -27,6 +27,10 @@ export class CollectionsService {
     );
   }
 
+  getCollection(id) {
+    return this.http.get(this.apiUrl + "/collection/" + id);
+  }
+
   createCollection(collection: Collection): Observable<Collection> {
     console.log("collectionService createCollection");
     return this.http.put<Collection>(this.apiUrl + "/collection", collection);

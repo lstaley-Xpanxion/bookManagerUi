@@ -23,6 +23,10 @@ export class GenreService {
     );
   }
 
+  getGenre(id) {
+    return this.http.get(this.apiUrl + "/genre/" + id);
+  }
+
   createGenre(genre: Genre): Observable<Genre> {
     console.log("genreService - createGenre");
     return this.http.put<Genre>(this.apiUrl + "/genre", genre);

@@ -24,7 +24,7 @@ export class BookEditorComponent implements OnInit {
   });
 
   authors: Author[];
-
+  id: any;
   constructor(
     private bookService: BookService,
     private authorService: AuthorsService,
@@ -33,15 +33,16 @@ export class BookEditorComponent implements OnInit {
 
   ngOnInit() {
     this.loadAuthors();
-    const id = this.route.snapshot.paramMap.get("id");
-    if (id != null) {
-      this.populateForm(id);
+    this.id = this.route.snapshot.paramMap.get("id");
+    if (this.id != null) {
+      this.populateForm(this.id);
     }
-    console.log(id);
+    console.log(this.id);
   }
 
   saveBook() {
     const book = new Book();
+    book.id = this.id;
     book.title = this.bookForm.value.title;
     book.description = this.bookForm.value.description;
     book.rating = this.bookForm.value.rating;

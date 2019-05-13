@@ -26,13 +26,13 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "collections", component: CollectionsComponent },
   { path: "collections/editor", component: CollectionEditorComponent },
-  { path: "collections/editor:id", component: CollectionEditorComponent },
+  { path: "collections/editor/:id", component: CollectionEditorComponent },
   { path: "series", component: SeriesComponent },
   { path: "series/editor", component: SeriesEditorComponent },
-  { path: "series/editor:id", component: SeriesEditorComponent },
+  { path: "series/editor/:id", component: SeriesEditorComponent },
   { path: "genres", component: GenreComponent },
   { path: "genres/editor", component: GenreEditorComponent },
-  { path: "genres/editor:id", component: GenreEditorComponent },
+  { path: "genres/editor/:id", component: GenreEditorComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
 

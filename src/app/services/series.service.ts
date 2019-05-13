@@ -23,6 +23,10 @@ export class SeriesService {
     );
   }
 
+  getASeries(id) {
+    return this.http.get(this.apiUrl + "/series/" + id);
+  }
+
   createSeries(series: Series): Observable<Series> {
     console.log("seriesService createSeries");
     return this.http.put<Series>(this.apiUrl + "/series", series);
