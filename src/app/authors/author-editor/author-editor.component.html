@@ -1,5 +1,8 @@
 <div>
-  <h2>Create/Edit an Author</h2>
+  <h2>
+    <span *ngIf="id == null">Create</span
+    ><span *ngIf="id != null">Edit</span> an Author
+  </h2>
 
   <form
     id="authorEditorForm"
@@ -17,7 +20,9 @@
         formControlName="firstName"
         name="firstName"
         required
+        maxlength="100"
       />
+      <mat-hint align="end">{{ firstNameInput.value.length }} / 100</mat-hint>
     </mat-form-field>
     <br /><br />
     <mat-form-field>
@@ -30,7 +35,9 @@
         formControlName="lastName"
         name="lastName"
         required
+        maxlength="100"
       />
+      <mat-hint align="end">{{ lastNameInput.value.length }} / 100</mat-hint>
     </mat-form-field>
     <br /><br />
     <mat-form-field>
@@ -44,6 +51,8 @@
         formControlName="rating"
         name="rating"
         required
+        max="10"
+        min="0"
       />
     </mat-form-field>
     <br /><br />

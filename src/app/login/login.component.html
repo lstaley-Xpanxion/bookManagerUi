@@ -1,3 +1,29 @@
-<p>
-  login works!
-</p>
+<div>
+  <h1>Login</h1>
+  <form id="loginForm" class="form-container" [formGroup]="loginForm">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Email"
+        formControlName="email"
+        required
+        type="email"
+      />
+    </mat-form-field>
+    <mat-error *ngIf="loginForm.get('email').hasError('email')">
+      Please enter a valid email address
+    </mat-error>
+    <br /><br />
+    <mat-form-field>
+      <input matInput placeholder="Password" required type="password" />
+    </mat-form-field>
+    <br />
+    <br />
+    <button id="loginButton" mat-raised-button color="primary" type="submit">
+      Login
+    </button>
+    <br />
+    <br />
+    <br />
+  </form>
+</div>

@@ -1,5 +1,8 @@
 <div>
-  <h2>Create/Edit a Book</h2>
+  <h2>
+    <span *ngIf="id == null">Create</span><span *ngIf="id != null">Edit</span> a
+    Book
+  </h2>
   <form
     id="editorForm"
     [formGroup]="bookForm"
@@ -14,8 +17,10 @@
         type="text"
         placeholder="Title"
         formControlName="title"
+        maxlength="250"
         required
       />
+      <mat-hint align="end">{{ titleInput.value.length }} / 250</mat-hint>
     </mat-form-field>
     <br /><br />
     <mat-form-field>
@@ -28,8 +33,10 @@
         #descriptionInput
         placeholder="Description"
         formControlName="description"
+        maxlength="500"
       >
       </textarea>
+      <mat-hint align="end">{{ descriptionInput.value.length }} / 500</mat-hint>
     </mat-form-field>
     <br /><br />
     <mat-form-field>
@@ -42,6 +49,8 @@
         placeholder="Rating"
         formControlName="rating"
         required
+        min="0"
+        max="10"
       />
     </mat-form-field>
     <br /><br />

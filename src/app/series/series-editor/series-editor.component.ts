@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Series } from "src/app/models/series";
 import { Author } from "src/app/models/author";
 import { Book } from "src/app/models/book";
@@ -17,8 +17,8 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class SeriesEditorComponent implements OnInit {
   seriesForm = new FormGroup({
-    name: new FormControl(),
-    description: new FormControl(),
+    name: new FormControl("", Validators.maxLength(250)),
+    description: new FormControl("", Validators.maxLength(500)),
     rating: new FormControl(),
     author: new FormControl(),
     book: new FormControl(),

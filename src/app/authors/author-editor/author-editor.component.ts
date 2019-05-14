@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Author } from "../../models/author";
 import { AuthorsService } from "../../services/authors.service";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { map } from "rxjs/operators";
 
@@ -12,8 +12,8 @@ import { map } from "rxjs/operators";
 })
 export class AuthorEditorComponent implements OnInit {
   authorForm = new FormGroup({
-    firstName: new FormControl(),
-    lastName: new FormControl(),
+    firstName: new FormControl("", Validators.maxLength(100)),
+    lastName: new FormControl("", Validators.maxLength(100)),
     rating: new FormControl()
   });
 

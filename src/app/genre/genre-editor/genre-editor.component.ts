@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { GenreService } from "src/app/services/genre.service";
 import { Genre } from "src/app/models/genre";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { map } from "rxjs/operators";
 
@@ -12,8 +12,8 @@ import { map } from "rxjs/operators";
 })
 export class GenreEditorComponent implements OnInit {
   genreForm = new FormGroup({
-    name: new FormControl(),
-    description: new FormControl()
+    name: new FormControl("", Validators.maxLength(250)),
+    description: new FormControl("", Validators.maxLength(500))
   });
 
   id: any;
