@@ -1,12 +1,21 @@
 <div class="grid-container">
   <h1 class="mat-h1">Home</h1>
   <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+    <mat-grid-tile
+      *ngFor="let card of cards | async"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            {{ card.title }}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
@@ -16,7 +25,20 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <div>
+            <bm-recent-authors
+              *ngIf="card.title === 'Recently Reviewed Authors'"
+            ></bm-recent-authors>
+            <bm-recent-books
+              *ngIf="card.title === 'Recently Reviewed Books'"
+            ></bm-recent-books>
+            <bm-recent-series
+              *ngIf="card.title === 'Recently Reviewed Series'"
+            ></bm-recent-series>
+            <bm-top-books
+              *ngIf="card.title === 'Top Rated Books'"
+            ></bm-top-books>
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

@@ -32,4 +32,20 @@ export class SeriesService {
     return this.http.put<Series>(this.apiUrl + "/series", series);
     // error catching to add
   }
+
+  getRecentlyUpdatedSeries(
+    sortField: string,
+    sortOrder: string,
+    pageSize: number
+  ) {
+    return this.http.get<Series[]>(
+      this.apiUrl +
+        "/series?sortOrder=" +
+        sortOrder +
+        "&pageSize=" +
+        pageSize +
+        "&sortField=" +
+        sortField
+    );
+  }
 }

@@ -3,7 +3,6 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { Series } from "src/app/models/series";
 import { Author } from "src/app/models/author";
 import { Book } from "src/app/models/book";
-import { CollectionsService } from "src/app/services/collections.service";
 import { AuthorsService } from "src/app/services/authors.service";
 import { BookService } from "src/app/services/book.service";
 import { Collection } from "src/app/models/collection";
@@ -56,7 +55,7 @@ export class SeriesEditorComponent implements OnInit {
     series.rating = this.seriesForm.value.rating;
     series.author = this.seriesForm.value.author;
     console.log("series " + series.name);
-    this.seriesSerivce.createSeries(series).subscribe(response => {});
+    this.seriesSerivce.createSeries(series).subscribe(() => {});
   }
 
   /**

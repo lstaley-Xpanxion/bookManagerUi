@@ -48,4 +48,23 @@ export class AuthorsService {
     return this.http.put<Author>(this.apiUrl + "/author", author);
     // error catching to add
   }
+
+  /**
+   * returns the most recently updated Authors
+   */
+  getRecentlyUpdatedAuthors(
+    sortField: string,
+    sortOrder: string,
+    pageSize: number
+  ) {
+    return this.http.get<Author[]>(
+      this.apiUrl +
+        "/authors?sortOrder=" +
+        sortOrder +
+        "&pageSize=" +
+        pageSize +
+        "&sortField=" +
+        sortField
+    );
+  }
 }

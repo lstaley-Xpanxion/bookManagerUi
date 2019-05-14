@@ -6,4 +6,5 @@ export class Series {
   description: string;
   author: Author;
   rating: number;
+  updateDate: Date;
 }

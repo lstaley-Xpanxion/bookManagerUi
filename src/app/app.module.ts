@@ -45,6 +45,10 @@ import { GenreComponent } from './genre/genre.component';
 import { GenreTableComponent } from './genre/genre-table/genre-table.component';
 import { GenreEditorComponent } from './genre/genre-editor/genre-editor.component';
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
+import { RecentAuthorsComponent } from './dashboard/recent-authors/recent-authors.component';
+import { RecentBooksComponent } from './dashboard/recent-books/recent-books.component';
+import { RecentSeriesComponent } from './dashboard/recent-series/recent-series.component';
+import { TopBooksComponent } from './dashboard/top-books/top-books.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +71,11 @@ import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.co
     GenreComponent,
     GenreTableComponent,
     GenreEditorComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    RecentAuthorsComponent,
+    RecentBooksComponent,
+    RecentSeriesComponent,
+    TopBooksComponent
   ],
   imports: [
     BrowserModule,

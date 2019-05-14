@@ -33,4 +33,26 @@ export class BookService {
     return this.http.put<Book>(this.apiUrl + "/book", book);
     // error catching to add
   }
+
+  getRecentlyUpdatedBooks(
+    sortField: string,
+    sortOrder: string,
+    pageSize: number
+  ) {
+    return this.http.get<Book[]>(
+      this.apiUrl +
+        "/books?sortOrder=" +
+        sortOrder +
+        "&pageSize=" +
+        pageSize +
+        "&sortField=" +
+        sortField
+    );
+  }
+
+  getTopRatedBooks(pageSize: number) {
+    return this.http.get<Book>(
+      this.apiUrl + "/books?sortOrder=ASC&sortField=rating&pageSize=" + pageSize
+    );
+  }
 }

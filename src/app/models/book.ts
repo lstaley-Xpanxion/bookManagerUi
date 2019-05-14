@@ -8,6 +8,7 @@ export class Book {
   title: string;
   description: string;
   rating: number;
+  updatedDate: Date;
   author: Author;
   genre: Genre[];
   series: Series;

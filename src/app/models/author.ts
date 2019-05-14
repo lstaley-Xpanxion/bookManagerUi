@@ -7,6 +7,7 @@ export class Author {
   firstName: string;
   lastName: string;
   rating: number;
+  updatedDate: Date;
   books: Book[];
   collections: Collection[];
   series: Series[];
