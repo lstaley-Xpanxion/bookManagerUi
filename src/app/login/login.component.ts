@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { MatSnackBar } from "@angular/material";
+import { ToasterService } from "../services/toaster.service";
 
 @Component({
   selector: "bm-login",
@@ -12,7 +14,15 @@ export class LoginComponent implements OnInit {
     password: new FormControl()
   });
 
-  constructor() {}
+  constructor(private toasterService: ToasterService) {}
 
   ngOnInit() {}
+
+  show() {
+    console.log("Show");
+    this.toasterService.showSuccessToaster("Logged In");
+  }
+
+  // mat-simple-snackbar ng-star-inserted
+  // simple-snack-bar
 }

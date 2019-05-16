@@ -22,8 +22,6 @@ export class AuthorTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: AuthorsTableDataSource;
 
-  recordCount: number;
-
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ["id", "firstName", "lastName", "rating", "actions"];
   defaultPageSize = 5;
@@ -31,8 +29,8 @@ export class AuthorTableComponent implements OnInit, AfterViewInit {
   constructor(private authorsService: AuthorsService) {}
 
   ngOnInit(): void {
-    this.recordCount = 10;
     this.dataSource = new AuthorsTableDataSource(this.authorsService);
+    this.dataSource.getAuthorCount();
     this.dataSource.loadAuthors(
       "",
       "asc",

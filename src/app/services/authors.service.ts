@@ -67,4 +67,8 @@ export class AuthorsService {
         sortField
     );
   }
+
+  getAuthorsCount() {
+    return this.http.get<number>(this.apiUrl + "/authors/count");
+  }
 }

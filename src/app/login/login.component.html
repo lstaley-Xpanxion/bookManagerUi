@@ -1,6 +1,11 @@
 <div>
   <h1>Login</h1>
-  <form id="loginForm" class="form-container" [formGroup]="loginForm">
+  <form
+    id="loginForm"
+    class="form-container"
+    [formGroup]="loginForm"
+    (ngSubmit)="show()"
+  >
     <mat-form-field>
       <input
         matInput

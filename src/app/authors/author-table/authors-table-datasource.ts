@@ -9,6 +9,7 @@ export class AuthorsTableDataSource implements DataSource<Author> {
   private authorsSubject = new BehaviorSubject<Author[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
   authors: Author[];
+  authorsCount: number;
 
   public loading = this.loadingSubject.asObservable();
 
@@ -39,5 +40,16 @@ export class AuthorsTableDataSource implements DataSource<Author> {
       )
       .pipe(finalize(() => this.loadingSubject.next(false)))
       .subscribe(() => this.authorsSubject.next(this.authors));
+  }
+
+  getAuthorCount() {
+    this.authorService
+      .getAuthorsCount()
+      .pipe(
+        map((resp: any) => {
+          this.authorsCount = resp;
+        })
+      )
+      .subscribe();
   }
 }

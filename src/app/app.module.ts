@@ -25,7 +25,8 @@ import {
   MatSortModule,
   MatInputModule,
   MatSelectModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatSnackBarModule
 } from "@angular/material";
 
 import { DashboardComponent } from "./dashboard/dashboard.component";
@@ -35,20 +36,21 @@ import { BookEditorComponent } from "./books/book-editor/book-editor.component";
 import { AuthorEditorComponent } from "./authors/author-editor/author-editor.component";
 import { LoginComponent } from "./login/login.component";
 import { HttpResponseInterceptor } from "./interceptor/httpresponse-interceptor";
-import { CollectionsTableComponent } from './collections/collections-table/collections-table.component';
-import { CollectionsComponent } from './collections/collections.component';
-import { CollectionEditorComponent } from './collections/collection-editor/collection-editor.component';
-import { SeriesComponent } from './series/series.component';
-import { SeriesTableComponent } from './series/series-table/series-table.component';
-import { SeriesEditorComponent } from './series/series-editor/series-editor.component';
-import { GenreComponent } from './genre/genre.component';
-import { GenreTableComponent } from './genre/genre-table/genre-table.component';
-import { GenreEditorComponent } from './genre/genre-editor/genre-editor.component';
-import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
-import { RecentAuthorsComponent } from './dashboard/recent-authors/recent-authors.component';
-import { RecentBooksComponent } from './dashboard/recent-books/recent-books.component';
-import { RecentSeriesComponent } from './dashboard/recent-series/recent-series.component';
-import { TopBooksComponent } from './dashboard/top-books/top-books.component';
+import { CollectionsTableComponent } from "./collections/collections-table/collections-table.component";
+import { CollectionsComponent } from "./collections/collections.component";
+import { CollectionEditorComponent } from "./collections/collection-editor/collection-editor.component";
+import { SeriesComponent } from "./series/series.component";
+import { SeriesTableComponent } from "./series/series-table/series-table.component";
+import { SeriesEditorComponent } from "./series/series-editor/series-editor.component";
+import { GenreComponent } from "./genre/genre.component";
+import { GenreTableComponent } from "./genre/genre-table/genre-table.component";
+import { GenreEditorComponent } from "./genre/genre-editor/genre-editor.component";
+import { PageNotFoundComponent } from "./errors/page-not-found/page-not-found.component";
+import { RecentAuthorsComponent } from "./dashboard/recent-authors/recent-authors.component";
+import { RecentBooksComponent } from "./dashboard/recent-books/recent-books.component";
+import { RecentSeriesComponent } from "./dashboard/recent-series/recent-series.component";
+import { TopBooksComponent } from "./dashboard/top-books/top-books.component";
+import { ToasterComponent } from "./toaster/toaster.component";
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { TopBooksComponent } from './dashboard/top-books/top-books.component';
     RecentAuthorsComponent,
     RecentBooksComponent,
     RecentSeriesComponent,
-    TopBooksComponent
+    TopBooksComponent,
+    ToasterComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +102,8 @@ import { TopBooksComponent } from './dashboard/top-books/top-books.component';
     MatInputModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSnackBarModule
   ],
   providers: [
     {
@@ -108,6 +112,7 @@ import { TopBooksComponent } from './dashboard/top-books/top-books.component';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ToasterComponent]
 })
 export class AppModule {}

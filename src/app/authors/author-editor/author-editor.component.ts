@@ -2,8 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { Author } from "../../models/author";
 import { AuthorsService } from "../../services/authors.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { map } from "rxjs/operators";
+import { ToasterService } from "src/app/services/toaster.service";
 
 @Component({
   selector: "bm-author-editor",
@@ -21,7 +22,9 @@ export class AuthorEditorComponent implements OnInit {
 
   constructor(
     private authorService: AuthorsService,
-    private route: ActivatedRoute
+    private toasterService: ToasterService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -39,7 +42,10 @@ export class AuthorEditorComponent implements OnInit {
     author.lastName = this.authorForm.value.lastName;
     author.rating = this.authorForm.value.rating;
     console.log("Author: " + author);
-    this.authorService.createAuthor(author).subscribe(() => {});
+    this.authorService.createAuthor(author).subscribe(() => {
+      this.toasterService.showSuccessToaster("Saved Author");
+      this.router.navigate(["/authors"]);
+    });
   }
 
   private populateForm(id) {
