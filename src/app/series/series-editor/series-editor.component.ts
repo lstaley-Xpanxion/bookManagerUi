@@ -8,7 +8,8 @@ import { BookService } from "src/app/services/book.service";
 import { Collection } from "src/app/models/collection";
 import { map } from "rxjs/operators";
 import { SeriesService } from "src/app/services/series.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ToasterService } from "src/app/services/toaster.service";
 
 @Component({
   selector: "bm-series-editor",
@@ -34,7 +35,9 @@ export class SeriesEditorComponent implements OnInit {
     private seriesSerivce: SeriesService,
     private authorService: AuthorsService,
     private bookService: BookService,
-    private route: ActivatedRoute
+    private toasterService: ToasterService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -55,7 +58,15 @@ export class SeriesEditorComponent implements OnInit {
     series.rating = this.seriesForm.value.rating;
     series.author = this.seriesForm.value.author;
     console.log("series " + series.name);
-    this.seriesSerivce.createSeries(series).subscribe(() => {});
+    this.seriesSerivce.createSeries(series).subscribe(
+      () => {
+        this.toasterService.showSuccessToaster("Series was successfully saved");
+        this.router.navigate(["/series"]);
+      },
+      () => {
+        this.toasterService.showErrorToaster("Saving of Series failed");
+      }
+    );
   }
 
   /**

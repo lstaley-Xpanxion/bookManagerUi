@@ -6,7 +6,8 @@ import { AuthorsService } from "src/app/services/authors.service";
 import { Author } from "src/app/models/author";
 import { Observable } from "rxjs";
 import { tap, map } from "rxjs/operators";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ToasterService } from "src/app/services/toaster.service";
 
 @Component({
   selector: "bm-book-editor",
@@ -28,7 +29,9 @@ export class BookEditorComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private authorService: AuthorsService,
-    private route: ActivatedRoute
+    private toasterService: ToasterService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -47,7 +50,13 @@ export class BookEditorComponent implements OnInit {
     book.description = this.bookForm.value.description;
     book.rating = this.bookForm.value.rating;
     book.author = this.bookForm.value.author;
-    this.bookService.createAuthor(book).subscribe(response => {});
+    this.bookService.createAuthor(book).subscribe(
+      response => {
+        this.toasterService.showSuccessToaster("Book was successfully saved");
+        this.router.navigate(["/books"]);
+      },
+      () => this.toasterService.showErrorToaster("Saving of Book failed")
+    );
   }
 
   loadAuthors() {

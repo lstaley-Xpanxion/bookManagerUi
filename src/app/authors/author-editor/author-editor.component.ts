@@ -42,10 +42,13 @@ export class AuthorEditorComponent implements OnInit {
     author.lastName = this.authorForm.value.lastName;
     author.rating = this.authorForm.value.rating;
     console.log("Author: " + author);
-    this.authorService.createAuthor(author).subscribe(() => {
-      this.toasterService.showSuccessToaster("Saved Author");
-      this.router.navigate(["/authors"]);
-    });
+    this.authorService.createAuthor(author).subscribe(
+      () => {
+        this.toasterService.showSuccessToaster("Saved Author");
+        this.router.navigate(["/authors"]);
+      },
+      () => this.toasterService.showErrorToaster("Saving of Author failed")
+    );
   }
 
   private populateForm(id) {

@@ -2,8 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { GenreService } from "src/app/services/genre.service";
 import { Genre } from "src/app/models/genre";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { map } from "rxjs/operators";
+import { ToasterService } from "src/app/services/toaster.service";
 
 @Component({
   selector: "bm-genre-editor",
@@ -20,7 +21,9 @@ export class GenreEditorComponent implements OnInit {
 
   constructor(
     private genreService: GenreService,
-    private route: ActivatedRoute
+    private toasterService: ToasterService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -36,7 +39,13 @@ export class GenreEditorComponent implements OnInit {
     genre.id = this.id;
     genre.name = this.genreForm.value.name;
     genre.description = this.genreForm.value.description;
-    this.genreService.createGenre(genre).subscribe(() => {});
+    this.genreService.createGenre(genre).subscribe(
+      () => {
+        this.toasterService.showSuccessToaster("Genre was saved successfully");
+        this.router.navigate(["/genres"]);
+      },
+      () => this.toasterService.showErrorToaster("Saving of Genre failed")
+    );
   }
 
   private populateForm(id) {

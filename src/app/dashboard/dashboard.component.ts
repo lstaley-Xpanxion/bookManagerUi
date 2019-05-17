@@ -21,8 +21,8 @@ export class DashboardComponent implements OnInit {
       }
 
       return [
-        { title: "Recently Reviewed Authors", cols: 2, rows: 1 },
-        { title: "Recently Reviewed Books", cols: 2, rows: 1 },
+        { title: "Recently Reviewed Authors", cols: 2, rows: 2 },
+        { title: "Recently Reviewed Books", cols: 2, rows: 2 },
         { title: "Recently Reviewed Series", cols: 1, rows: 2 },
         { title: "Top Rated Books", cols: 1, rows: 1 }
       ];

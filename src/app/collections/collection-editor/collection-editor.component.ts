@@ -7,7 +7,8 @@ import { CollectionsService } from "src/app/services/collections.service";
 import { Collection } from "src/app/models/collection";
 import { map } from "rxjs/operators";
 import { BookService } from "src/app/services/book.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ToasterService } from "src/app/services/toaster.service";
 
 @Component({
   selector: "bm-collection-editor",
@@ -31,7 +32,9 @@ export class CollectionEditorComponent implements OnInit {
     private collectionService: CollectionsService,
     private authorService: AuthorsService,
     private bookService: BookService,
-    private route: ActivatedRoute
+    private toasterService: ToasterService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -52,7 +55,17 @@ export class CollectionEditorComponent implements OnInit {
     collection.rating = this.collectionForm.value.rating;
     collection.authors = this.collectionForm.value.authors;
     console.log("collection " + collection.name);
-    this.collectionService.createCollection(collection).subscribe(() => {});
+    this.collectionService.createCollection(collection).subscribe(
+      () => {
+        this.toasterService.showSuccessToaster(
+          "Collection was saved successfully"
+        );
+        this.router.navigate(["/collections"]);
+      },
+      () => {
+        this.toasterService.showErrorToaster("Collection saving failed");
+      }
+    );
   }
 
   /**
