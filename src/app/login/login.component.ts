@@ -2,6 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material";
 import { ToasterService } from "../services/toaster.service";
+import { LoginService } from "../services/login.service";
+import { User } from "../models/user";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "bm-login",
@@ -10,19 +13,37 @@ import { ToasterService } from "../services/toaster.service";
 })
 export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
-    email: new FormControl("", Validators.email),
+    userName: new FormControl(),
+    // email: new FormControl("", Validators.email),
     password: new FormControl()
   });
 
-  constructor(private toasterService: ToasterService) {}
+  constructor(
+    private loginService: LoginService,
+    private toasterService: ToasterService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    sessionStorage.setItem("token", "");
+  }
 
   show() {
     console.log("Show");
-    this.toasterService.showSuccessToaster("Logged In");
+    const user = new User();
+    user.userName = this.loginForm.value.email;
+    user.password = this.loginForm.value.password;
+    this.loginService.login(user).subscribe(isValid => {
+      if (isValid) {
+        sessionStorage.setItem(
+          "token",
+          btoa(user.userName + ":" + user.password)
+        );
+        this.toasterService.showSuccessToaster("Logged In");
+        this.router.navigate([""]);
+      } else {
+        this.router.navigate(["errors / access_denied"]);
+      }
+    });
   }
-
-  // mat-simple-snackbar ng-star-inserted
-  // simple-snack-bar
 }

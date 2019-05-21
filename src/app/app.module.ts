@@ -51,6 +51,7 @@ import { RecentBooksComponent } from "./dashboard/recent-books/recent-books.comp
 import { RecentSeriesComponent } from "./dashboard/recent-series/recent-series.component";
 import { TopBooksComponent } from "./dashboard/top-books/top-books.component";
 import { ToasterComponent } from "./toaster/toaster.component";
+import { AccessDeniedComponent } from './errors/access-denied/access-denied.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { ToasterComponent } from "./toaster/toaster.component";
     RecentBooksComponent,
     RecentSeriesComponent,
     TopBooksComponent,
-    ToasterComponent
+    ToasterComponent,
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,

@@ -9,15 +9,15 @@
     <mat-form-field>
       <input
         matInput
-        placeholder="Email"
-        formControlName="email"
+        placeholder="User Name"
+        formControlName="userName"
         required
-        type="email"
+        type="text"
       />
     </mat-form-field>
-    <mat-error *ngIf="loginForm.get('email').hasError('email')">
+    <!--  <mat-error *ngIf="loginForm.get('email').hasError('email')">
       Please enter a valid email address
-    </mat-error>
+    </mat-error> -->
     <br /><br />
     <mat-form-field>
       <input matInput placeholder="Password" required type="password" />

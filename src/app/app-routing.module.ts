@@ -13,6 +13,7 @@ import { SeriesEditorComponent } from "./series/series-editor/series-editor.comp
 import { GenreEditorComponent } from "./genre/genre-editor/genre-editor.component";
 import { GenreComponent } from "./genre/genre.component";
 import { PageNotFoundComponent } from "./errors/page-not-found/page-not-found.component";
+import { AccessDeniedComponent } from "./errors/access-denied/access-denied.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "dashboard" },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: "genres", component: GenreComponent },
   { path: "genres/editor", component: GenreEditorComponent },
   { path: "genres/editor/:id", component: GenreEditorComponent },
+  { path: "errors/access_denied", component: AccessDeniedComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
 
